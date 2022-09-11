@@ -13,7 +13,7 @@ export interface FieldLabelProps {
   required?: boolean;
 }
 
-export function FieldLabel(props: FieldLabelProps) {
+export default function FieldLabel(props: FieldLabelProps) {
   const theme = useTheme();
   const { name, required, label, error } = props;
   const requiredLabel = (

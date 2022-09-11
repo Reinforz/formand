@@ -7,8 +7,8 @@ import {
 } from '@mui/material';
 import { useField } from 'formik';
 import { ReactNode } from 'react';
-import { FieldHelperText } from './FieldHelperText';
-import { FieldLabel } from './FieldLabel';
+import FieldHelperText from './FieldHelperText';
+import FieldLabel from './FieldLabel';
 
 export type TextInputProps = TextFieldProps & {
   helperText?: string;
@@ -19,7 +19,7 @@ export type TextInputProps = TextFieldProps & {
   maxLength?: number;
 };
 
-export function TextInput({
+export default function TextInput({
   helperText,
   label,
   placeholder,

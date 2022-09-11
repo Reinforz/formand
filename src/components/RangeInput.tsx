@@ -1,7 +1,7 @@
 import { Box, FormControl, FormControlProps, Stack, TextField } from '@mui/material';
 import { useField } from 'formik';
-import { FieldHelperText } from './FieldHelperText';
-import { FieldLabel } from './FieldLabel';
+import FieldHelperText from './FieldHelperText';
+import FieldLabel from './FieldLabel';
 
 export type RangeInputProps = {
   helperText?: string;
@@ -11,7 +11,7 @@ export type RangeInputProps = {
   required?: boolean;
 };
 
-export function RangeInput({
+export default function RangeInput({
   helperText,
   label,
   name,

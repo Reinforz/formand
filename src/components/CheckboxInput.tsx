@@ -5,7 +5,7 @@ import {
   FormControlLabel
 } from '@mui/material';
 import { useField } from 'formik';
-import { FieldHelperText } from './FieldHelperText';
+import FieldHelperText from './FieldHelperText';
 
 export type CheckboxInputProps = CheckboxProps & {
   helperText?: string;
@@ -13,7 +13,7 @@ export type CheckboxInputProps = CheckboxProps & {
   label?: string;
 };
 
-export function CheckboxInput({
+export default function CheckboxInput({
   helperText,
   label,
   name,

@@ -2,9 +2,9 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { IconButton, InputAdornment } from '@mui/material';
 import { useState } from 'react';
-import { TextInput, TextInputProps } from './TextInput';
+import TextInput, { TextInputProps } from './TextInput';
 
-export function PasswordInput(props: TextInputProps) {
+export default function PasswordInput(props: TextInputProps) {
   const [isShowingPass, setIsShowingPass] = useState(false);
 
   const handleClickShowPassword = () => {
