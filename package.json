@@ -1,0 +1,19 @@
+{
+  "name": "@reinforz/formand",
+  "version": "0.0.1",
+  "description": "Build beautiful and interactive forms with a simple json configuration",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NLP-practitioners/formand.git"
+  },
+  "author": "Safwan Shaheer <devorein00@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NLP-practitioners/formand/issues"
+  },
+  "homepage": "https://github.com/NLP-practitioners/formand#readme"
+}
