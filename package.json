@@ -17,8 +17,13 @@
   },
   "homepage": "https://github.com/NLP-practitioners/formand#readme",
   "devDependencies": {
-    "@types/react": "^18.0.19",
-    "react": "^17.0.2",
+    "@types/react": "^17.0.0",
     "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "@mui/material": "^5.8.1",
+    "@mui/system": "^5.8.1",
+    "formik": "^2.2.9"
   }
 }
