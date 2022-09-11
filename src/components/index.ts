@@ -5,5 +5,6 @@ export { default as PasswordInput } from "./PasswordInput";
 export { default as RangeInput, RangeInputProps } from "./RangeInput";
 export { default as RatingInput, RatingInputProps } from "./RatingInput";
 export { default as SelectInput, SelectInputProps } from "./SelectInput";
+export { default as TagsInput, TagsInputProps } from "./TagsInput";
 export { default as TextInput, TextInputProps } from "./TextInput";
 
