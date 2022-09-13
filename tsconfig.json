@@ -4,7 +4,6 @@
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "strict": true,
     "jsx": "react-jsx",
     "module": "ESNext",
     "declaration": true,
