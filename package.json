@@ -2,9 +2,15 @@
   "name": "@reinforz/formand",
   "version": "0.0.1",
   "description": "Build beautiful and interactive forms with a simple json configuration",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rollup": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -17,7 +23,12 @@
   },
   "homepage": "https://github.com/NLP-practitioners/formand#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^14.1.0",
+    "@rollup/plugin-typescript": "^8.5.0",
     "@types/react": "^17.0.0",
+    "rollup": "^2.79.0",
+    "rollup-plugin-dts": "^4.2.2",
     "typescript": "^4.8.3"
   },
   "dependencies": {
