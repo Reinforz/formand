@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   stories: ['../stories/**/*.stories.tsx'],
-  staticDirs: ['../public'],
+  staticDirs: [],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   typescript: {
     reactDocgen: 'none'
