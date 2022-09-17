@@ -21,4 +21,4 @@ jobs:
           npm ci --no-fund --no-audit
       - name: Build
         run: |
-          npm build
+          npm run build
