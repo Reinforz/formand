@@ -3,9 +3,9 @@ import {
   CheckboxProps,
   FormControl,
   FormControlLabel
-} from '@mui/material';
-import { useField } from 'formik';
-import FieldHelperText from './FieldHelperText';
+} from "@mui/material";
+import { useField } from "formik";
+import FieldHelperText from "./FieldHelperText";
 
 export type CheckboxInputProps = CheckboxProps & {
   helperText?: string;
@@ -24,7 +24,7 @@ export default function CheckboxInput({
   return (
     <FormControl
       sx={{
-        width: 'fit-content'
+        width: "fit-content",
       }}
     >
       <FormControlLabel
