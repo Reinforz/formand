@@ -1,15 +1,15 @@
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import { IconButton, InputAdornment } from '@mui/material';
-import { useState } from 'react';
-import TextInput, { TextInputProps } from './TextInput';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
+import { IconButton, InputAdornment } from '@mui/material'
+import { useState } from 'react'
+import TextInput, { TextInputProps } from './TextInput'
 
-export default function PasswordInput(props: TextInputProps) {
-  const [isShowingPass, setIsShowingPass] = useState(false);
+export default function PasswordInput (props: TextInputProps): JSX.Element {
+  const [isShowingPass, setIsShowingPass] = useState(false)
 
-  const handleClickShowPassword = () => {
-    setIsShowingPass((prev) => !prev);
-  };
+  const handleClickShowPassword = (): void => {
+    setIsShowingPass((prev) => !prev)
+  }
 
   return (
     <TextInput
@@ -25,16 +25,18 @@ export default function PasswordInput(props: TextInputProps) {
         endAdornment: (
           <InputAdornment position='end'>
             <IconButton onClick={handleClickShowPassword}>
-              {isShowingPass ? (
+              {isShowingPass
+                ? (
                 <VisibilityOutlinedIcon />
-              ) : (
+                  )
+                : (
                 <VisibilityOffOutlinedIcon />
-              )}
+                  )}
             </IconButton>
           </InputAdornment>
         )
       }}
       {...props}
     />
-  );
+  )
 }

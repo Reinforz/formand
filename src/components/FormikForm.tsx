@@ -1,36 +1,27 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Stack,
-  SxProps,
-  Typography
-} from '@mui/material';
-import { Form, Formik, FormikConfig } from 'formik';
-import { ReactNode } from 'react';
-import { FormConstants, FormInputs } from '../types';
-import { FormikFormInputs } from './FormikFormInput';
-import LoadingButton from './LoadingButton';
+import { Box, Button, Divider, Stack, SxProps, Typography } from '@mui/material'
+import { Form, Formik, FormikConfig } from 'formik'
+import { ReactNode } from 'react'
+import { FormConstants, FormInputs } from '../types'
+import { FormikFormInputs } from './FormikFormInput'
+import LoadingButton from './LoadingButton'
 
-export interface FormikFormProps<
-  Payload extends Record<string, any>
-> {
-  formPreSubmit?: ReactNode;
-  formFooter?: ReactNode;
+export interface FormikFormProps<Payload extends Record<string, any>> {
+  formPreSubmit?: ReactNode
+  formFooter?: ReactNode
   formConstants: FormConstants<Payload> & {
-    payloadFactory: () => Payload;
-    validationSchema: any;
-  };
-  formInputs: FormInputs<Payload>;
-  onSubmit: FormikConfig<Payload>["onSubmit"];
-  formBodySx?: SxProps;
-  formSx?: SxProps;
+    payloadFactory: () => Payload
+    validationSchema: any
+  }
+  formInputs: FormInputs<Payload>
+  onSubmit: FormikConfig<Payload>['onSubmit']
+  formBodySx?: SxProps
+  formSx?: SxProps
   isLoading?: boolean
 }
 
-export function FormikForm<Payload extends Record<string, any>>(
+export function FormikForm<Payload extends Record<string, any>> (
   props: FormikFormProps<Payload>
-) {
+): JSX.Element {
   const {
     isLoading = false,
     formFooter,
@@ -51,7 +42,7 @@ export function FormikForm<Payload extends Record<string, any>>(
     formPreSubmit,
     formSx = {},
     onSubmit
-  } = props;
+  } = props
 
   return (
     <Formik
@@ -60,16 +51,14 @@ export function FormikForm<Payload extends Record<string, any>>(
       onSubmit={onSubmit}
       validateOnMount
       validateOnChange={true}
-      initialValues={payloadFactory()}
-    >
+      initialValues={payloadFactory()}>
       {({ isSubmitting, isValid }) => (
         <Box sx={formSx}>
           <Form
             style={{
               height: 'fit-content',
               width: '100%'
-            }}
-          >
+            }}>
             <Stack
               gap={1}
               my={2}
@@ -78,26 +67,20 @@ export function FormikForm<Payload extends Record<string, any>>(
                 flexDirection: { xs: 'column', sm: 'initial' },
                 alignItems: { xs: 'center', sm: 'initial' },
                 my: { md: 3 }
-              }}
-            >
+              }}>
               <Stack
-                flexDirection='row'
-                alignItems='center'
+                flexDirection="row"
+                alignItems="center"
                 sx={{
                   justifyContent: { sm: 'center', xs: 'normal' },
                   display: 'initial'
-                }}
-              >
-                <Typography variant='h5'>{formHeaderText}</Typography>
+                }}>
+                <Typography variant="h5">{formHeaderText}</Typography>
               </Stack>
               {formHeaderHelperText && (
                 <Typography
-                  variant='subtitle1'
-                  sx={{
-                    opacity: 0.75,
-                    display: { xs: 'none', sm: 'initial' }
-                  }}
-                >
+                  variant="subtitle1"
+                  sx={{ opacity: 0.75, display: { xs: 'none', sm: 'initial' } }}>
                   {formHeaderHelperText}
                 </Typography>
               )}
@@ -119,19 +102,21 @@ export function FormikForm<Payload extends Record<string, any>>(
               gap={2}
             />
             {formPreSubmit}
-            <Stack flexDirection='row' justifyContent='space-between' mb={3}>
-              {isLoading ? (
-                <LoadingButton disabled>{onLoadButtonText}</LoadingButton>
-              ) : (
-                <Button type='submit' disabled={isSubmitting || !isValid}>
-                  {submitButtonText}
-                </Button>
-              )}
+            <Stack flexDirection="row" justifyContent="space-between" mb={3}>
+              {isLoading
+                ? (
+                    <LoadingButton disabled>{onLoadButtonText}</LoadingButton>
+                  )
+                : (
+                  <Button type="submit" disabled={isSubmitting || !isValid}>
+                    {submitButtonText}
+                  </Button>
+                  )}
             </Stack>
             {formFooter}
           </Form>
         </Box>
       )}
     </Formik>
-  );
+  )
 }

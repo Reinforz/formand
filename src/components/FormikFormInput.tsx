@@ -1,29 +1,29 @@
-import { Box, Stack, StackProps } from '@mui/material';
-import type { FormConstants, FormInputs, RegularFormInput } from '../types';
-import { transformString } from '../utils';
-import CheckboxInput from './CheckboxInput';
-import DatePickerInput from './DatePickerInput';
-import PasswordInput from './PasswordInput';
-import RangeInput from './RangeInput';
-import RatingInput from './RatingInput';
-import SelectInput from './SelectInput';
-import TagsInput from './TagsInput';
-import TextInput from './TextInput';
+import { Box, Stack, StackProps } from '@mui/material'
+import type { FormConstants, FormInputs, RegularFormInput } from '../types'
+import { transformString } from '../utils'
+import CheckboxInput from './CheckboxInput'
+import DatePickerInput from './DatePickerInput'
+import PasswordInput from './PasswordInput'
+import RangeInput from './RangeInput'
+import RatingInput from './RatingInput'
+import SelectInput from './SelectInput'
+import TagsInput from './TagsInput'
+import TextInput from './TextInput'
 
 type FormikFormInputProps<RequestPayload extends Record<string, any>> =
   RegularFormInput<RequestPayload> & {
-    autoFocus: boolean;
-    required: boolean;
-    placeholder?: string;
-    label?: keyof RequestPayload | (string & {});
-    disabled: boolean;
-    helperText?: string;
-    maxLength?: number;
-  };
+    autoFocus: boolean
+    required: boolean
+    placeholder?: string
+    label?: keyof RequestPayload | (string & Record<string, never>)
+    disabled: boolean
+    helperText?: string
+    maxLength?: number
+  }
 
-export function FormikFormInput<RequestPayload extends Record<string, any>>(
+export function FormikFormInput<RequestPayload extends Record<string, any>> (
   props: FormikFormInputProps<RequestPayload>
-) {
+): JSX.Element | null {
   const {
     disabled,
     placeholder,
@@ -34,10 +34,10 @@ export function FormikFormInput<RequestPayload extends Record<string, any>>(
     type,
     name,
     maxLength
-  } = props;
+  } = props
 
   const transformedLabel = (label ??
-    transformString(name as string, "pascal")) as string;
+    transformString(name as string, 'pascal')) as string
   const fieldCommonProps = {
     label: transformedLabel,
     disabled,
@@ -45,14 +45,14 @@ export function FormikFormInput<RequestPayload extends Record<string, any>>(
     name: name as string,
     required,
     helperText
-  };
+  }
 
   switch (type) {
     case 'password': {
-      return <PasswordInput autoFocus={autoFocus} {...fieldCommonProps} />;
+      return <PasswordInput autoFocus={autoFocus} {...fieldCommonProps} />
     }
     case 'text': {
-      return <TextInput autoFocus={autoFocus} {...fieldCommonProps} />;
+      return <TextInput autoFocus={autoFocus} {...fieldCommonProps} />
     }
     case 'text-multi': {
       return (
@@ -63,7 +63,7 @@ export function FormikFormInput<RequestPayload extends Record<string, any>>(
           maxLength={maxLength}
           {...fieldCommonProps}
         />
-      );
+      )
     }
     case 'select': {
       return (
@@ -73,7 +73,7 @@ export function FormikFormInput<RequestPayload extends Record<string, any>>(
           transformation={props.transformation}
           multiple={props.multiple ?? false}
         />
-      );
+      )
     }
     case 'checkbox': {
       return (
@@ -82,41 +82,41 @@ export function FormikFormInput<RequestPayload extends Record<string, any>>(
           checked={props.checked}
           onClick={props.onClick}
         />
-      );
+      )
     }
 
     case 'rating': {
-      return <RatingInput {...fieldCommonProps} />;
+      return <RatingInput {...fieldCommonProps} />
     }
 
     case 'number': {
-      return <TextInput {...fieldCommonProps} type='number' />;
+      return <TextInput {...fieldCommonProps} type='number' />
     }
     case 'tags': {
-      return <TagsInput {...fieldCommonProps} />;
+      return <TagsInput {...fieldCommonProps} />
     }
     case 'date': {
-      return <DatePickerInput {...fieldCommonProps} />;
+      return <DatePickerInput {...fieldCommonProps} />
     }
     case 'range': {
-      return <RangeInput {...fieldCommonProps} />;
+      return <RangeInput {...fieldCommonProps} />
     }
     default: {
-      return null;
+      return null
     }
   }
 }
 
 export type FormikFormInputsProps<RequestPayload extends Record<any, any>> = {
-  isDisabled?: boolean;
-  formInputs: FormInputs<RequestPayload>;
+  isDisabled?: boolean
+  formInputs: FormInputs<RequestPayload>
 } & Pick<
-  FormConstants<RequestPayload>,
-  'helperText' | 'label' | 'placeholder' | 'optionalFields'
+FormConstants<RequestPayload>,
+'helperText' | 'label' | 'placeholder' | 'optionalFields'
 > &
-  Partial<StackProps>;
+Partial<StackProps>
 
-export function FormikFormInputs<RequestPayload extends Record<any, any>>({
+export function FormikFormInputs<RequestPayload extends Record<any, any>> ({
   formInputs,
   helperText,
   label,
@@ -124,11 +124,12 @@ export function FormikFormInputs<RequestPayload extends Record<any, any>>({
   placeholder,
   isDisabled = false,
   ...stackProps
-}: FormikFormInputsProps<RequestPayload>) {
+}: FormikFormInputsProps<RequestPayload>): JSX.Element {
   return (
     <Stack {...stackProps}>
       {formInputs.map((formInput, formInputIndex) =>
-        formInput.type === 'group' ? (
+        formInput.type === 'group'
+          ? (
           <Stack flexDirection='row' gap={1} key={formInput.name}>
             {formInput.items.map((formInputItem, itemIndex) => {
               return (
@@ -150,10 +151,11 @@ export function FormikFormInputs<RequestPayload extends Record<any, any>>({
                     {...formInputItem}
                   />
                 </Box>
-              );
+              )
             })}
           </Stack>
-        ) : (
+            )
+          : (
           <FormikFormInput<RequestPayload>
             autoFocus={formInputIndex === 0}
             key={formInput.name as string}
@@ -164,8 +166,8 @@ export function FormikFormInputs<RequestPayload extends Record<any, any>>({
             helperText={helperText?.[formInput.name]}
             {...formInput}
           />
-        )
+            )
       )}
     </Stack>
-  );
+  )
 }

@@ -6,8 +6,8 @@ module.exports = {
   extends: [
     "plugin:react/recommended",
     "standard-with-typescript",
-    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/jsx-runtime"
   ],
   parser: "@typescript-eslint/parser",
   overrides: [],
@@ -20,5 +20,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
-  rules: {},
+  rules: {
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "no-multiple-empty-lines": "off"
+  },
 };
