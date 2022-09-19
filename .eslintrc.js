@@ -22,6 +22,8 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "no-multiple-empty-lines": "off"
+    "no-multiple-empty-lines": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/semi": "off"
   },
 };
