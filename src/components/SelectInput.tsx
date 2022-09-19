@@ -5,29 +5,29 @@ import {
   Select,
   SelectProps,
   Typography
-} from '@mui/material';
-import { useField } from 'formik';
-import { transformString } from '../utils';
-import FieldHelperText from './FieldHelperText';
-import FieldLabel from './FieldLabel';
+} from '@mui/material'
+import { useField } from 'formik'
+import { transformString } from '../utils'
+import FieldHelperText from './FieldHelperText'
+import FieldLabel from './FieldLabel'
 
 export type SelectInputProps<T = string> = SelectProps<T> & {
-  helperText?: string;
-  name: string;
-  label?: string;
-  placeholder?: string | number;
+  helperText?: string
+  name: string
+  label?: string
+  placeholder?: string | number
   values:
-    | string[]
-    | ReadonlyArray<string>
-    | {
-        value: string;
-        label: string;
-      }[];
-  formControlProps?: FormControlProps;
-  transformation?: 'capitalize' | 'split_capitalize';
-};
+  | string[]
+  | readonly string[]
+  | Array<{
+    value: string
+    label: string
+  }>
+  formControlProps?: FormControlProps
+  transformation?: 'capitalize' | 'split_capitalize'
+}
 
-export default function SelectInput<T extends string>({
+export default function SelectInput<T extends string> ({
   helperText,
   label,
   placeholder,
@@ -39,8 +39,8 @@ export default function SelectInput<T extends string>({
   formControlProps = {},
   transformation = 'split_capitalize',
   ...props
-}: SelectInputProps<T>) {
-  const [field, { error, value: selectValue }] = useField(name);
+}: SelectInputProps<T>): JSX.Element {
+  const [field, { error, value: selectValue }] = useField(name)
   return (
     <FormControl {...formControlProps}>
       {label && <FieldLabel error={error} label={label} name={field.name} />}
@@ -55,35 +55,35 @@ export default function SelectInput<T extends string>({
         renderValue={(value) => {
           if (Array.isArray(value)) {
             if (value.length === 0) {
-              return <Typography>None selected</Typography>;
+              return <Typography>None selected</Typography>
             }
             return value
               .map((val) => transformString(val, transformation))
-              .join(',');
+              .join(',')
           }
           if (!value) {
-            return 'None';
+            return 'None'
           }
-          return transformString(value, transformation);
+          return transformString(value, transformation)
         }}
         {...field}
         {...props}
         value={selectValue}
         required={!Array.isArray(selectValue)}
       >
-        {values.map((value) => {
-          return typeof value === 'string' ? (
+        {values.map((value) => (typeof value === 'string'
+          ? (
             <MenuItem key={value} value={value}>
               {transformString(value, transformation)}
             </MenuItem>
-          ) : (
+          )
+          : (
             <MenuItem key={value.value} value={value.value}>
               {value.label}
             </MenuItem>
-          );
-        })}
+          )))}
       </Select>
       {helperText && <FieldHelperText helperText={helperText} />}
     </FormControl>
-  );
+  )
 }

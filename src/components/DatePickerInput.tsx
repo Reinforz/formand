@@ -1,33 +1,37 @@
-import { Box, FormControl, FormControlProps, TextField } from '@mui/material';
-import { DatePicker, DatePickerProps } from '@mui/x-date-pickers';
-import { useField } from 'formik';
-import FieldHelperText from './FieldHelperText';
-import FieldLabel from './FieldLabel';
+import {
+  Box, FormControl, FormControlProps, TextField
+} from '@mui/material'
+import { DatePicker, DatePickerProps } from '@mui/x-date-pickers'
+import { useField } from 'formik'
+import FieldHelperText from './FieldHelperText'
+import FieldLabel from './FieldLabel'
 
 export type DatePickerInputProps = Omit<
-  DatePickerProps<any, any>,
-  'value' | 'label' | 'onChange' | 'renderInput'
+DatePickerProps<any, any>,
+'value' | 'label' | 'onChange' | 'renderInput'
 > & {
-  helperText?: string;
-  name: string;
-  label?: string;
-  formControlProps?: FormControlProps;
-  required?: boolean;
-};
+  helperText?: string
+  name: string
+  label?: string
+  formControlProps?: FormControlProps
+  required?: boolean
+}
 
-export default function DatePickerInput({
+export default function DatePickerInput ({
   helperText,
   label,
   name,
   required,
   formControlProps = {},
   ...props
-}: DatePickerInputProps) {
-  const [field, { value }, { setValue }] = useField(name);
+}: DatePickerInputProps): JSX.Element {
+  const [field, { value }, { setValue }] = useField(name)
 
-  const labelField = label ? (
-    <FieldLabel required={required} label={label} name={field.name} />
-  ) : null;
+  const labelField = label
+    ? (
+      <FieldLabel required={required} label={label} name={field.name} />
+    )
+    : null
 
   return (
     <FormControl {...formControlProps}>
@@ -37,7 +41,7 @@ export default function DatePickerInput({
         value={value}
         onChange={(date) => {
           if (date) {
-            setValue(date.toString());
+            setValue(date.toString())
           }
         }}
         renderInput={(params) => (
@@ -57,5 +61,5 @@ export default function DatePickerInput({
         </Box>
       )}
     </FormControl>
-  );
+  )
 }

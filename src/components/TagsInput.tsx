@@ -5,25 +5,25 @@ import {
   Chip,
   FormControl,
   TextField
-} from '@mui/material';
-import { useField } from 'formik';
-import FieldHelperText from './FieldHelperText';
-import FieldLabel from './FieldLabel';
+} from '@mui/material'
+import { useField } from 'formik'
+import FieldHelperText from './FieldHelperText'
+import FieldLabel from './FieldLabel'
 
 export interface TagsInputProps
   extends Omit<
-    AutocompleteProps<string, true, undefined, true>,
-    'options' | 'renderInput'
+  AutocompleteProps<string, true, undefined, true>,
+  'options' | 'renderInput'
   > {
-  name: string;
-  required?: boolean;
-  label: string;
-  max?: number;
-  placeholder?: string;
-  helperText?: string;
+  name: string
+  required?: boolean
+  label: string
+  max?: number
+  placeholder?: string
+  helperText?: string
 }
 
-export default function TagsInput(props: TagsInputProps) {
+export default function TagsInput (props: TagsInputProps): JSX.Element {
   const {
     placeholder,
     max = 5,
@@ -32,8 +32,8 @@ export default function TagsInput(props: TagsInputProps) {
     name,
     helperText,
     ...rest
-  } = props;
-  const [field, { value }, { setValue }] = useField<string[]>(name);
+  } = props
+  const [field, { value }, { setValue }] = useField<string[]>(name)
   return (
     <FormControl>
       <FieldLabel required={required} label={label} name={field.name} />
@@ -41,21 +41,19 @@ export default function TagsInput(props: TagsInputProps) {
         multiple
         options={[]}
         freeSolo
-        renderTags={(tags, getTagProps) =>
-          tags.map((tag, index) => (
-            <Chip variant='filled' label={tag} {...getTagProps({ index })} />
-          ))
-        }
+        renderTags={(tags, getTagProps) => tags.map((tag, index) => (
+          <Chip variant="filled" label={tag} {...getTagProps({ index })} key={tag} />
+        ))}
         onChange={(_, tags) => {
           setValue(
-            tags.map((tag) => tag.toLowerCase().trim().split(" ").join())
-          );
+            tags.map((tag) => tag.toLowerCase().trim().split(' ').join())
+          )
         }}
         value={value}
         renderInput={(params) => (
           <TextField
             {...params}
-            variant='outlined'
+            variant="outlined"
             placeholder={placeholder}
             disabled={value.length === max}
             inputProps={{
@@ -72,5 +70,5 @@ export default function TagsInput(props: TagsInputProps) {
         </Box>
       )}
     </FormControl>
-  );
+  )
 }

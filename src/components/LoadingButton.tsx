@@ -1,14 +1,13 @@
-import { Button, ButtonProps, CircularProgress } from '@mui/material';
-import { ReactNode } from 'react';
+import { Button, ButtonProps, CircularProgress } from '@mui/material'
 
 interface LoadingButtonProps extends ButtonProps {
-  children: ReactNode
+  children: JSX.Element | string
 }
 
-export default function LoadingButton({ children, ...props }: LoadingButtonProps) {
+export default function LoadingButton ({ children, ...props }: LoadingButtonProps): JSX.Element {
   return (
     <Button
-      variant='contained'
+      variant="contained"
       sx={{
         maxWidth: 250,
         alignSelf: 'center'
@@ -24,5 +23,5 @@ export default function LoadingButton({ children, ...props }: LoadingButtonProps
       />
       {children}
     </Button>
-  );
+  )
 }
