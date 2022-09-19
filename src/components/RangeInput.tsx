@@ -1,4 +1,6 @@
-import { Box, FormControl, FormControlProps, Stack, TextField } from '@mui/material'
+import {
+  Box, FormControl, FormControlProps, Stack, TextField
+} from '@mui/material'
 import { useField } from 'formik'
 import FieldHelperText from './FieldHelperText'
 import FieldLabel from './FieldLabel'
@@ -18,36 +20,35 @@ export default function RangeInput ({
   required = false,
   formControlProps = {}
 }: RangeInputProps): JSX.Element {
-  const [field, { error, touched, value }, { setTouched, setValue }] =
-    useField(name)
+  const [field, { error, touched, value }, { setTouched, setValue }] = useField(name)
 
   const errorState = touched ? Boolean(error) : false
 
   const labelField = label
     ? (
-    <FieldLabel
-      required={required}
-      error={
+      <FieldLabel
+        required={required}
+        error={
         touched && error ? (error.includes('required') ? '' : error) : undefined
       }
-      label={label}
-      name={field.name}
-    />
-      )
+        label={label}
+        name={field.name}
+      />
+    )
     : null
 
   return (
     <FormControl {...formControlProps}>
       {labelField}
-      <Stack gap={1} flexDirection="row" alignItems={'center'}>
+      <Stack gap={1} flexDirection="row" alignItems="center">
         <TextField
           error={errorState}
           id={field.name}
-          placeholder='0'
+          placeholder="0"
           onClick={() => {
             setTouched(true, true)
           }}
-          type='number'
+          type="number"
           onChange={(e) => {
             setValue([Number(e.target.value), value[1]])
           }}
@@ -63,14 +64,14 @@ export default function RangeInput ({
         <TextField
           error={errorState}
           id={field.name}
-          placeholder='∞'
+          placeholder="∞"
           onChange={(e) => {
             setValue([value[0], Number(e.target.value)])
           }}
           onClick={() => {
             setTouched(true, true)
           }}
-          type='number'
+          type="number"
           value={value[1]}
           InputProps={{
             inputProps: {

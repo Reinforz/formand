@@ -1,4 +1,6 @@
-import { Box, Button, Divider, Stack, SxProps, Typography } from '@mui/material'
+import {
+  Box, Button, Divider, Stack, SxProps, Typography
+} from '@mui/material'
 import { Form, Formik, FormikConfig } from 'formik'
 import { ReactNode } from 'react'
 import { FormConstants, FormInputs } from '../types'
@@ -50,15 +52,17 @@ export function FormikForm<Payload extends Record<string, any>> (
       validationSchema={validationSchema}
       onSubmit={onSubmit}
       validateOnMount
-      validateOnChange={true}
-      initialValues={payloadFactory()}>
+      validateOnChange
+      initialValues={payloadFactory()}
+    >
       {({ isSubmitting, isValid }) => (
         <Box sx={formSx}>
           <Form
             style={{
               height: 'fit-content',
               width: '100%'
-            }}>
+            }}
+          >
             <Stack
               gap={1}
               my={2}
@@ -67,20 +71,23 @@ export function FormikForm<Payload extends Record<string, any>> (
                 flexDirection: { xs: 'column', sm: 'initial' },
                 alignItems: { xs: 'center', sm: 'initial' },
                 my: { md: 3 }
-              }}>
+              }}
+            >
               <Stack
                 flexDirection="row"
                 alignItems="center"
                 sx={{
                   justifyContent: { sm: 'center', xs: 'normal' },
                   display: 'initial'
-                }}>
+                }}
+              >
                 <Typography variant="h5">{formHeaderText}</Typography>
               </Stack>
               {formHeaderHelperText && (
                 <Typography
                   variant="subtitle1"
-                  sx={{ opacity: 0.75, display: { xs: 'none', sm: 'initial' } }}>
+                  sx={{ opacity: 0.75, display: { xs: 'none', sm: 'initial' } }}
+                >
                   {formHeaderHelperText}
                 </Typography>
               )}
@@ -105,13 +112,13 @@ export function FormikForm<Payload extends Record<string, any>> (
             <Stack flexDirection="row" justifyContent="space-between" mb={3}>
               {isLoading
                 ? (
-                    <LoadingButton disabled>{onLoadButtonText}</LoadingButton>
-                  )
+                  <LoadingButton disabled>{onLoadButtonText}</LoadingButton>
+                )
                 : (
                   <Button type="submit" disabled={isSubmitting || !isValid}>
                     {submitButtonText}
                   </Button>
-                  )}
+                )}
             </Stack>
             {formFooter}
           </Form>

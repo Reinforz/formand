@@ -28,8 +28,8 @@ export default function RatingInput ({
 
   const labelField = label
     ? (
-    <FieldLabel required={required} label={label} name={field.name} />
-      )
+      <FieldLabel required={required} label={label} name={field.name} />
+    )
     : null
 
   return (

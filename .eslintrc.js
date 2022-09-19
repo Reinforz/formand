@@ -2,12 +2,15 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true
   },
   extends: [
     "plugin:react/recommended",
-    "standard-with-typescript",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/jsx-runtime"
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:import/typescript",
+    "plugin:react/jsx-runtime",
   ],
   parser: "@typescript-eslint/parser",
   overrides: [],
@@ -24,6 +27,11 @@ module.exports = {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "no-multiple-empty-lines": "off",
     "@typescript-eslint/space-before-function-paren": "off",
-    "@typescript-eslint/semi": "off"
+    "@typescript-eslint/semi": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "no-nested-ternary": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off"
   },
 };

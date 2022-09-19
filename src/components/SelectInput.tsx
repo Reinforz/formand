@@ -71,19 +71,17 @@ export default function SelectInput<T extends string> ({
         value={selectValue}
         required={!Array.isArray(selectValue)}
       >
-        {values.map((value) => {
-          return typeof value === 'string'
-            ? (
+        {values.map((value) => (typeof value === 'string'
+          ? (
             <MenuItem key={value} value={value}>
               {transformString(value, transformation)}
             </MenuItem>
-              )
-            : (
+          )
+          : (
             <MenuItem key={value.value} value={value.value}>
               {value.label}
             </MenuItem>
-              )
-        })}
+          )))}
       </Select>
       {helperText && <FieldHelperText helperText={helperText} />}
     </FormControl>

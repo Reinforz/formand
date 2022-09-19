@@ -1,4 +1,6 @@
-import { Box, FormControl, FormControlProps, TextField } from '@mui/material'
+import {
+  Box, FormControl, FormControlProps, TextField
+} from '@mui/material'
 import { DatePicker, DatePickerProps } from '@mui/x-date-pickers'
 import { useField } from 'formik'
 import FieldHelperText from './FieldHelperText'
@@ -27,8 +29,8 @@ export default function DatePickerInput ({
 
   const labelField = label
     ? (
-    <FieldLabel required={required} label={label} name={field.name} />
-      )
+      <FieldLabel required={required} label={label} name={field.name} />
+    )
     : null
 
   return (

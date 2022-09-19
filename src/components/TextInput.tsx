@@ -32,8 +32,7 @@ export default function TextInput ({
   maxLength,
   ...props
 }: TextInputProps): JSX.Element {
-  const [field, { error, touched, value }, { setTouched }] =
-    useField<string>(name)
+  const [field, { error, touched, value }, { setTouched }] = useField<string>(name)
 
   const errorState = touched ? Boolean(error) : false
 
@@ -51,7 +50,7 @@ export default function TextInput ({
         label={label}
         name={field.name}
       />
-      )
+    )
     : null
 
   let maxCharLengthField: ReactNode = null
@@ -63,7 +62,7 @@ export default function TextInput ({
     maxCharLengthField = (
       <FieldHelperText
         sx={{
-          mb: 0.5
+          mb: 0.5,
         }}
         helperText={`${value?.length || 0}/${maxLength}`}
       />
@@ -73,7 +72,9 @@ export default function TextInput ({
   return (
     <FormControl {...formControlProps}>
       <>
-        {labelField} {maxCharLengthField}
+        {labelField}
+        {' '}
+        {maxCharLengthField}
         <TextField
           fullWidth={fullWidth}
           multiline={multiline}

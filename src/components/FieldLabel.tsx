@@ -1,4 +1,6 @@
-import { Box, FormHelperText, FormLabel, Typography, useTheme } from '@mui/material'
+import {
+  Box, FormHelperText, FormLabel, Typography, useTheme
+} from '@mui/material'
 
 export interface FieldLabelProps {
   name: string
@@ -9,19 +11,21 @@ export interface FieldLabelProps {
 
 export default function FieldLabel (props: FieldLabelProps): JSX.Element {
   const theme = useTheme()
-  const { name, required, label, error } = props
+  const {
+    name, required, label, error
+  } = props
   const requiredLabel = (
     <Box display="flex">
       {label}
       {required
         ? (
-        <Typography color={theme.palette.error.light} marginLeft={0.5}>
-          *
-        </Typography>
-          )
+          <Typography color={theme.palette.error.light} marginLeft={0.5}>
+            *
+          </Typography>
+        )
         : (
-            ''
-          )}
+          ''
+        )}
     </Box>
   )
   return (

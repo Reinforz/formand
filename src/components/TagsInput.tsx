@@ -41,11 +41,9 @@ export default function TagsInput (props: TagsInputProps): JSX.Element {
         multiple
         options={[]}
         freeSolo
-        renderTags={(tags, getTagProps) =>
-          tags.map((tag, index) => (
-            <Chip variant='filled' label={tag} {...getTagProps({ index })} key={tag} />
-          ))
-        }
+        renderTags={(tags, getTagProps) => tags.map((tag, index) => (
+          <Chip variant="filled" label={tag} {...getTagProps({ index })} key={tag} />
+        ))}
         onChange={(_, tags) => {
           setValue(
             tags.map((tag) => tag.toLowerCase().trim().split(' ').join())
@@ -55,7 +53,7 @@ export default function TagsInput (props: TagsInputProps): JSX.Element {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant='outlined'
+            variant="outlined"
             placeholder={placeholder}
             disabled={value.length === max}
             inputProps={{

@@ -1,4 +1,6 @@
-import { Checkbox, CheckboxProps, FormControl, FormControlLabel } from '@mui/material'
+import {
+  Checkbox, CheckboxProps, FormControl, FormControlLabel
+} from '@mui/material'
 import { useField } from 'formik'
 import FieldHelperText from './FieldHelperText'
 

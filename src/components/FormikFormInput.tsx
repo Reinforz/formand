@@ -36,8 +36,8 @@ export function FormikFormInput<RequestPayload extends Record<string, any>> (
     maxLength
   } = props
 
-  const transformedLabel = (label ??
-    transformString(name as string, 'pascal')) as string
+  const transformedLabel = (label
+    ?? transformString(name as string, 'pascal')) as string
   const fieldCommonProps = {
     label: transformedLabel,
     disabled,
@@ -55,10 +55,11 @@ export function FormikFormInput<RequestPayload extends Record<string, any>> (
       return <TextInput autoFocus={autoFocus} {...fieldCommonProps} />
     }
     case 'text-multi': {
+      const { rows = 5 } = props;
       return (
         <TextInput
           multiline
-          rows={props.rows ?? 5}
+          rows={rows}
           autoFocus={autoFocus}
           maxLength={maxLength}
           {...fieldCommonProps}
@@ -66,21 +67,24 @@ export function FormikFormInput<RequestPayload extends Record<string, any>> (
       )
     }
     case 'select': {
+      const { values, transformation, multiple = false } = props;
       return (
         <SelectInput
           {...fieldCommonProps}
-          values={props.values}
-          transformation={props.transformation}
-          multiple={props.multiple ?? false}
+          values={values}
+          transformation={transformation}
+          multiple={multiple}
         />
       )
     }
     case 'checkbox': {
+      const { checked, onClick } = props;
+
       return (
         <CheckboxInput
           {...fieldCommonProps}
-          checked={props.checked}
-          onClick={props.onClick}
+          checked={checked}
+          onClick={onClick}
         />
       )
     }
@@ -90,7 +94,7 @@ export function FormikFormInput<RequestPayload extends Record<string, any>> (
     }
 
     case 'number': {
-      return <TextInput {...fieldCommonProps} type='number' />
+      return <TextInput {...fieldCommonProps} type="number" />
     }
     case 'tags': {
       return <TagsInput {...fieldCommonProps} />
@@ -127,35 +131,32 @@ export function FormikFormInputs<RequestPayload extends Record<any, any>> ({
 }: FormikFormInputsProps<RequestPayload>): JSX.Element {
   return (
     <Stack {...stackProps}>
-      {formInputs.map((formInput, formInputIndex) =>
-        formInput.type === 'group'
-          ? (
-          <Stack flexDirection='row' gap={1} key={formInput.name}>
-            {formInput.items.map((formInputItem, itemIndex) => {
-              return (
-                <Box
-                  width={`${
-                    formInput.sizes
-                      ? formInput.sizes[itemIndex] * 100
-                      : 100 / formInput.items.length
-                  }%`}
-                  key={formInputItem.name as string}
-                >
-                  <FormikFormInput<RequestPayload>
-                    autoFocus={itemIndex === 0 && formInputIndex === 0}
-                    placeholder={placeholder?.[formInputItem.name]}
-                    required={!optionalFields.includes(formInputItem.name)}
-                    helperText={helperText?.[formInputItem.name]}
-                    label={label?.[formInputItem.name]}
-                    disabled={isDisabled}
-                    {...formInputItem}
-                  />
-                </Box>
-              )
-            })}
+      {formInputs.map((formInput, formInputIndex) => (formInput.type === 'group'
+        ? (
+          <Stack flexDirection="row" gap={1} key={formInput.name}>
+            {formInput.items.map((formInputItem, itemIndex) => (
+              <Box
+                width={`${
+                  formInput.sizes
+                    ? formInput.sizes[itemIndex] * 100
+                    : 100 / formInput.items.length
+                }%`}
+                key={formInputItem.name as string}
+              >
+                <FormikFormInput<RequestPayload>
+                  autoFocus={itemIndex === 0 && formInputIndex === 0}
+                  placeholder={placeholder?.[formInputItem.name]}
+                  required={!optionalFields.includes(formInputItem.name)}
+                  helperText={helperText?.[formInputItem.name]}
+                  label={label?.[formInputItem.name]}
+                  disabled={isDisabled}
+                  {...formInputItem}
+                />
+              </Box>
+            ))}
           </Stack>
-            )
-          : (
+        )
+        : (
           <FormikFormInput<RequestPayload>
             autoFocus={formInputIndex === 0}
             key={formInput.name as string}
@@ -166,8 +167,7 @@ export function FormikFormInputs<RequestPayload extends Record<any, any>> ({
             helperText={helperText?.[formInput.name]}
             {...formInput}
           />
-            )
-      )}
+        )))}
     </Stack>
   )
 }

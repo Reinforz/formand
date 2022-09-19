@@ -7,7 +7,7 @@ interface LoadingButtonProps extends ButtonProps {
 export default function LoadingButton ({ children, ...props }: LoadingButtonProps): JSX.Element {
   return (
     <Button
-      variant='contained'
+      variant="contained"
       sx={{
         maxWidth: 250,
         alignSelf: 'center'

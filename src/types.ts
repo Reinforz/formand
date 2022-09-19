@@ -40,7 +40,8 @@ export type RegularFormInput<RequestPayload extends Record<string, any>> =
     onClick?: CheckboxInputProps['onClick']
   }
 
-export type FormInputs<RequestPayload extends Record<string, any>> = Array<GroupFormInput<RequestPayload> | RegularFormInput<RequestPayload>>
+export type FormInputs<RequestPayload extends Record<string, any>> =
+  Array<GroupFormInput<RequestPayload> | RegularFormInput<RequestPayload>>
 
 export interface FormConstants<Payload> {
   label?: Partial<Record<keyof Payload, string>>

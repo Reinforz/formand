@@ -23,15 +23,15 @@ export default function PasswordInput (props: TextInputProps): JSX.Element {
           }
         },
         endAdornment: (
-          <InputAdornment position='end'>
+          <InputAdornment position="end">
             <IconButton onClick={handleClickShowPassword}>
               {isShowingPass
                 ? (
-                <VisibilityOutlinedIcon />
-                  )
+                  <VisibilityOutlinedIcon />
+                )
                 : (
-                <VisibilityOffOutlinedIcon />
-                  )}
+                  <VisibilityOffOutlinedIcon />
+                )}
             </IconButton>
           </InputAdornment>
         )
