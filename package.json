@@ -46,6 +46,7 @@
     "@mui/material": "^5.8.1",
     "@mui/system": "^5.8.1",
     "@mui/x-date-pickers": "^5.0.1",
+    "dayjs": "^1.11.5",
     "formik": "^2.2.9",
     "react": "^17.0.2"
   },

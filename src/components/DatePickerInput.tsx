@@ -1,9 +1,9 @@
 import { Box, FormControl, FormControlProps, TextField } from '@mui/material';
-import { DatePicker, DatePickerProps } from '@mui/x-date-pickers';
+import { DatePicker, DatePickerProps, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useField } from 'formik';
 import FieldHelperText from './FieldHelperText';
 import FieldLabel from './FieldLabel';
-
 export type DatePickerInputProps = Omit<
   DatePickerProps<any, any>,
   'value' | 'label' | 'onChange' | 'renderInput'
@@ -32,6 +32,8 @@ export default function DatePickerInput({
   return (
     <FormControl {...formControlProps}>
       {labelField}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+
       <DatePicker<Date>
         {...props}
         value={value}
@@ -48,9 +50,10 @@ export default function DatePickerInput({
               readOnly: true
             }}
             {...params}
-          />
-        )}
-      />
+            />
+            )}
+            />
+           </LocalizationProvider>
       {helperText && (
         <Box my={0.5}>
           <FieldHelperText helperText={helperText} />

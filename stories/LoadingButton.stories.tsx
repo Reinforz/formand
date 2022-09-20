@@ -9,13 +9,15 @@ export default {
   component: LoadingButton
 } as Meta;
 
-const Template: Story<LoadingButtonProps> = (props)=> {
+const Template: Story<{loadingButtonProps:LoadingButtonProps}&{props:any}> = ({loadingButtonProps,props})=> {
   return (
-    <LoadingButton {...props} />
+    <LoadingButton {...loadingButtonProps} {...props} />
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {
-    children:'Please Wait'
+    loadingButtonProps:{
+      children:"Please Wait"
+    }
 };
