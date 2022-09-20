@@ -1,7 +1,7 @@
 import { Button, ButtonProps, CircularProgress } from '@mui/material';
 import { ReactNode } from 'react';
 
-interface LoadingButtonProps extends ButtonProps {
+export interface LoadingButtonProps extends ButtonProps {
   children: ReactNode
 }
 
