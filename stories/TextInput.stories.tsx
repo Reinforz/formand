@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import { Formik, FormikConfig } from 'formik';
 import { z } from 'zod';
 
-import { TextInput, TextInputProps } from '../src/components';
+import TextInput, { TextInputProps } from '../src/components/TextInput';
 import { toFormikValidationSchema } from './helpers';
 
 export default {

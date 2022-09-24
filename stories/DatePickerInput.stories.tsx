@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import { Formik, FormikConfig } from 'formik';
-import { DatePickerInput, DatePickerInputProps } from '../src/components';
+import DatePickerInput, { DatePickerInputProps } from '../src/components/DatePickerInput';
 
 export default {
   title: 'Components/Form/DatePicker Input',

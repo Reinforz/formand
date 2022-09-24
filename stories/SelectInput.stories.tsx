@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import { Formik } from 'formik';
 
-import { SelectInput, SelectInputProps } from '../src/components';
+import SelectInput, { SelectInputProps } from '../src/components/SelectInput';
 
 export default {
   title: 'Components/Form/Select Input',

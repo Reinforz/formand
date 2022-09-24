@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import { Formik, FormikConfig } from 'formik';
 import { z } from 'zod';
 
-import { RangeInput, RangeInputProps } from '../src/components';
+import RangeInput, { RangeInputProps } from '../src/components/RangeInput';
 import { toFormikValidationSchema } from './helpers';
 
 export default {

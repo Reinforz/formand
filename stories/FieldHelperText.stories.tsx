@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 
-import { FieldHelperText, FieldHelperTextProps } from '../src/components';
+import FieldHelperText, { FieldHelperTextProps } from '../src/components/FieldHelperText';
 
 export default {
   title: 'Components/Form/Field helper text',

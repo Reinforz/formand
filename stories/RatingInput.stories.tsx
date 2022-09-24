@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import { Formik, FormikConfig } from 'formik';
-import { RatingInput, RatingInputProps } from '../src/components';
+import RatingInput, { RatingInputProps } from '../src/components/RatingInput';
 
 export default {
   title: 'Components/Form/Rating Input',

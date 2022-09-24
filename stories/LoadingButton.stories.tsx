@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react';
-import { LoadingButton, LoadingButtonProps } from '../src/components';
+import LoadingButton, { LoadingButtonProps } from '../src/components/LoadingButton';
 
 
 export default {

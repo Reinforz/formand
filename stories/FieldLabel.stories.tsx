@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import { Meta, Story } from '@storybook/react';
 
-import { FieldLabel, FieldLabelProps } from '../src/components';
+import FieldLabel, { FieldLabelProps } from '../src/components/FieldLabel';
 
 export default {
   title: 'Components/Form/Field label text',

@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import { Formik, FormikConfig } from 'formik';
 
-import { CheckboxInput, CheckboxInputProps } from '../src/components';
+import CheckboxInput, { CheckboxInputProps } from '../src/components/CheckboxInput';
 
 export default {
   title: 'Components/Form/Checkbox Input',
@@ -9,23 +9,21 @@ export default {
 } as Meta;
 
 const Template: Story<
-  { checkboxInputProps: CheckboxInputProps } & {
-    formikProps?: Partial<FormikConfig<{ name: string }>>;
-  }
-> = ({ checkboxInputProps, formikProps }) => {
-  return (
-    <Formik
-      initialValues={{
-        name: 'John Doe'
-      }}
-      onSubmit={() => {}}
-      validateOnMount
-      {...formikProps}
-    >
-      <CheckboxInput {...checkboxInputProps} />
-    </Formik>
-  );
-};
+{ checkboxInputProps: CheckboxInputProps } & {
+  formikProps?: Partial<FormikConfig<{ name: string }>>;
+}
+> = ({ checkboxInputProps, formikProps }) => (
+  <Formik
+    initialValues={{
+      name: 'John Doe'
+    }}
+    onSubmit={() => {}}
+    validateOnMount
+    {...formikProps}
+  >
+    <CheckboxInput {...checkboxInputProps} />
+  </Formik>
+);
 
 export const Default = Template.bind({});
 Default.args = {
