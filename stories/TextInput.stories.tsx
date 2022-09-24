@@ -11,23 +11,21 @@ export default {
 } as Meta;
 
 const Template: Story<
-  { textInputProps: TextInputProps } & {
-    formikProps?: Partial<FormikConfig<{ name: string }>>;
-  }
-> = ({ textInputProps, formikProps }) => {
-  return (
-    <Formik
-      initialValues={{
-        name: 'John Doe'
-      }}
-      onSubmit={() => { }}
-      validateOnMount
-      {...formikProps}
-    >
-      <TextInput {...textInputProps} />
-    </Formik>
-  );
-};
+{ textInputProps: TextInputProps } & {
+  formikProps?: Partial<FormikConfig<{ name: string }>>;
+}
+> = ({ textInputProps, formikProps }) => (
+  <Formik
+    initialValues={{
+      name: 'John Doe'
+    }}
+    onSubmit={() => { }}
+    validateOnMount
+    {...formikProps}
+  >
+    <TextInput {...textInputProps} />
+  </Formik>
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -63,7 +61,8 @@ RequiredFieldError.args = {
     name: 'name',
     label: 'Full name',
     placeholder: 'John Doe',
-    helperText: 'First and last name separated by space'
+    helperText: 'First and last name separated by space',
+    required: true
   },
   formikProps: {
     initialValues: {
@@ -89,7 +88,8 @@ InvalidFieldInputError.args = {
     name: 'name',
     label: 'Full name',
     placeholder: 'John Doe',
-    helperText: 'First and last name separated by space'
+    helperText: 'First and last name separated by space',
+    required: true
   },
   formikProps: {
     initialValues: {
@@ -98,10 +98,12 @@ InvalidFieldInputError.args = {
     initialTouched: {
       name: true
     },
-    validationSchema: z
-      .object({
-        name: z.string({ invalid_type_error: 'Must specify a string' })
-      })
-      .strict()
+    validationSchema: toFormikValidationSchema(
+      z
+        .object({
+          name: z.string({ invalid_type_error: 'String expected' })
+        })
+        .strict()
+    )
   }
 };

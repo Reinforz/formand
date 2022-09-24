@@ -8,13 +8,11 @@ export default {
   component: FieldLabel
 } as Meta;
 
-const Template: Story<FieldLabelProps> = (props) => {
-  return (
-    <Box width={250}>
-      <FieldLabel {...props} />
-    </Box>
-  );
-};
+const Template: Story<FieldLabelProps> = (props) => (
+  <Box width={250}>
+    <FieldLabel {...props} />
+  </Box>
+);
 
 export const Default = Template.bind({});
 Default.args = {

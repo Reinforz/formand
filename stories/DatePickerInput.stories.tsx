@@ -1,57 +1,56 @@
-import { Meta, Story } from "@storybook/react";
-import { Formik, FormikConfig } from "formik";
-import { DatePickerInput, DatePickerInputProps } from "../src/components";
+import { Meta, Story } from '@storybook/react';
+import { Formik, FormikConfig } from 'formik';
+import { DatePickerInput, DatePickerInputProps } from '../src/components';
 
 export default {
-  title: "Components/Form/DatePicker Input",
+  title: 'Components/Form/DatePicker Input',
   component: DatePickerInput,
 } as Meta;
 
 const Template: Story<
-  { DatePickerInputProps: DatePickerInputProps } & {
-    formikProps?: Partial<FormikConfig<{ name: string }>>;
-  }
-> = ({ DatePickerInputProps, formikProps }) => {
-  return (
-    <Formik
-      initialValues={{
-        name: "DatePicker",
-      }}
-      onSubmit={() => {}}
-      validateOnMount
-      {...formikProps}
-    >
-      <DatePickerInput {...DatePickerInputProps} />
-    </Formik>
-  );
-};
+{
+  datePickerInputProps: DatePickerInputProps } & {
+  formikProps?: Partial<FormikConfig<{ name: string }>>;
+}
+> = ({ datePickerInputProps, formikProps }) => (
+  <Formik
+    initialValues={{
+      name: 'DatePicker',
+    }}
+    onSubmit={() => {}}
+    validateOnMount
+    {...formikProps}
+  >
+    <DatePickerInput {...datePickerInputProps} />
+  </Formik>
+);
 
 export const Default = Template.bind({});
 Default.args = {
-  DatePickerInputProps: {
-    name: "DatePicker",
+  datePickerInputProps: {
+    name: 'DatePicker',
   },
 };
 
 export const WithLabelHelperText = Template.bind({});
-WithLabelHelperText.storyName = "Label + Helper text";
+WithLabelHelperText.storyName = 'Label + Helper text';
 
 WithLabelHelperText.args = {
-  DatePickerInputProps: {
-    name: "DatePicker",
-    label: "Date Picker",
-    helperText: "Select a date",
+  datePickerInputProps: {
+    name: 'DatePicker',
+    label: 'Date Picker',
+    helperText: 'Select a date',
   },
 };
 
 export const WithRequired = Template.bind({});
-WithRequired.storyName = "Label + Helper text + Required";
+WithRequired.storyName = 'Label + Helper text + Required';
 
 WithRequired.args = {
-  DatePickerInputProps: {
-    name: "DatePicker",
-    label: "Date Picker",
-    helperText: "Select a date",
+  datePickerInputProps: {
+    name: 'DatePicker',
+    label: 'Date Picker',
+    helperText: 'Select a date',
     required: true,
   },
 };

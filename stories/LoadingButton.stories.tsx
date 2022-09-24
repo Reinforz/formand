@@ -1,6 +1,4 @@
 import { Meta, Story } from '@storybook/react';
-
-
 import { LoadingButton, LoadingButtonProps } from '../src/components';
 
 
@@ -9,15 +7,14 @@ export default {
   component: LoadingButton
 } as Meta;
 
-const Template: Story<{loadingButtonProps:LoadingButtonProps}&{props:any}> = ({loadingButtonProps,props})=> {
-  return (
-    <LoadingButton {...loadingButtonProps} {...props} />
-  );
-};
+const Template: Story<{ loadingButtonProps:LoadingButtonProps }> = ({ loadingButtonProps }) => (
+  <LoadingButton {...loadingButtonProps} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
-    loadingButtonProps:{
-      children:"Please Wait"
-    }
+  loadingButtonProps: {
+    children: 'Please Wait',
+    variant: 'outlined'
+  }
 };

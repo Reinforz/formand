@@ -11,6 +11,7 @@ export interface RangeInputProps {
   label?: string
   formControlProps?: FormControlProps
   required?: boolean
+  step?: number
 }
 
 export default function RangeInput ({
@@ -18,6 +19,7 @@ export default function RangeInput ({
   label,
   name,
   required = false,
+  step = 5,
   formControlProps = {}
 }: RangeInputProps): JSX.Element {
   const [field, { error, touched, value }, { setTouched, setValue }] = useField(name)
@@ -57,8 +59,11 @@ export default function RangeInput ({
             inputProps: {
               min: 0,
               max: value?.[1],
-              step: 5,
+              step,
             },
+          }}
+          sx={{
+            width: '50%'
           }}
         />
         <TextField
@@ -76,8 +81,11 @@ export default function RangeInput ({
           InputProps={{
             inputProps: {
               min: value?.[0],
-              step: 5,
+              step,
             },
+          }}
+          sx={{
+            width: '50%'
           }}
         />
       </Stack>

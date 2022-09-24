@@ -1,10 +1,11 @@
 import {
   Box, FormControl, FormControlProps, TextField
-} from '@mui/material'
-import { DatePicker, DatePickerProps } from '@mui/x-date-pickers'
-import { useField } from 'formik'
-import FieldHelperText from './FieldHelperText'
-import FieldLabel from './FieldLabel'
+} from '@mui/material';
+import { DatePicker, DatePickerProps, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { useField } from 'formik';
+import FieldHelperText from './FieldHelperText';
+import FieldLabel from './FieldLabel';
 
 export type DatePickerInputProps = Omit<
 DatePickerProps<any, any>,
@@ -37,27 +38,26 @@ export default function DatePickerInput ({
     <FormControl {...formControlProps}>
       {labelField}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-
-      <DatePicker<Date>
-        {...props}
-        value={value}
-        onChange={(date) => {
-          if (date) {
-            setValue(date.toString())
-          }
-        }}
-        renderInput={(params) => (
-          <TextField
-            disabled
-            InputProps={{
-              disabled: true,
-              readOnly: true
-            }}
-            {...params}
+        <DatePicker<Date>
+          {...props}
+          value={value}
+          onChange={(date) => {
+            if (date) {
+              setValue(date.toString())
+            }
+          }}
+          renderInput={(params) => (
+            <TextField
+              disabled
+              InputProps={{
+                disabled: true,
+                readOnly: true
+              }}
+              {...params}
             />
-            )}
-            />
-           </LocalizationProvider>
+          )}
+        />
+      </LocalizationProvider>
       {helperText && (
         <Box my={0.5}>
           <FieldHelperText helperText={helperText} />

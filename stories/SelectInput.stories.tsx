@@ -8,19 +8,17 @@ export default {
   component: SelectInput
 } as Meta;
 
-const Template: Story<SelectInputProps> = (props) => {
-  return (
-    <Formik
-      initialValues={{
-        role: 'user'
-      }}
-      onSubmit={() => {}}
-      validateOnMount
-    >
-      <SelectInput {...props} />
-    </Formik>
-  );
-};
+const Template: Story<SelectInputProps> = (props) => (
+  <Formik
+    initialValues={{
+      role: 'user'
+    }}
+    onSubmit={() => {}}
+    validateOnMount
+  >
+    <SelectInput {...props} />
+  </Formik>
+);
 
 export const Default = Template.bind({});
 Default.args = {

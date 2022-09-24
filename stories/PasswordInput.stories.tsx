@@ -12,23 +12,21 @@ export default {
 
 
 const Template: Story<
-  { passwordInputProps: TextInputProps } & {
-    formikProps?: Partial<FormikConfig<{ password: string }>>;
-  }
-> = ({ passwordInputProps, formikProps }) => {
-  return (
-    <Formik
-      initialValues={{
-        password: ''
-      }}
-      onSubmit={() => {}}
-      validateOnMount
-      {...formikProps}
-    >
-      <PasswordInput {...passwordInputProps} />
-    </Formik>
-  );
-};
+{ passwordInputProps: TextInputProps } & {
+  formikProps?: Partial<FormikConfig<{ password: string }>>;
+}
+> = ({ passwordInputProps, formikProps }) => (
+  <Formik
+    initialValues={{
+      password: ''
+    }}
+    onSubmit={() => {}}
+    validateOnMount
+    {...formikProps}
+  >
+    <PasswordInput {...passwordInputProps} />
+  </Formik>
+);
 
 export const Default = Template.bind({});
 Default.args = {

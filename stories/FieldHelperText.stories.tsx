@@ -7,11 +7,9 @@ export default {
   component: FieldHelperText
 } as Meta;
 
-const Template: Story<FieldHelperTextProps> = (props) => {
-  return (
-    <FieldHelperText {...props} />
-  );
-};
+const Template: Story<FieldHelperTextProps> = (props) => (
+  <FieldHelperText {...props} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
