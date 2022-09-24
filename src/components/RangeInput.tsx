@@ -1,49 +1,52 @@
-import { Box, FormControl, FormControlProps, Stack, TextField } from '@mui/material';
-import { useField } from 'formik';
-import FieldHelperText from './FieldHelperText';
-import FieldLabel from './FieldLabel';
+import {
+  Box, FormControl, FormControlProps, Stack, TextField
+} from '@mui/material'
+import { useField } from 'formik'
+import FieldHelperText from './FieldHelperText'
+import FieldLabel from './FieldLabel'
 
-export type RangeInputProps = {
-  helperText?: string;
-  name: string;
-  label?: string;
-  formControlProps?: FormControlProps;
-  required?: boolean;
-};
+export interface RangeInputProps {
+  helperText?: string
+  name: string
+  label?: string
+  formControlProps?: FormControlProps
+  required?: boolean
+}
 
-export default function RangeInput({
+export default function RangeInput ({
   helperText,
   label,
   name,
   required = false,
   formControlProps = {}
-}: RangeInputProps) {
-  const [field, { error, touched, value }, { setTouched, setValue }] =
-    useField(name);
+}: RangeInputProps): JSX.Element {
+  const [field, { error, touched, value }, { setTouched, setValue }] = useField(name)
 
-  const errorState = touched ? Boolean(error) : false;
+  const errorState = touched ? Boolean(error) : false
 
-  const labelField = label ? (
-    <FieldLabel
-      required={required}
-      error={
+  const labelField = label
+    ? (
+      <FieldLabel
+        required={required}
+        error={
         touched && error ? (error.includes('required') ? '' : error) : undefined
       }
-      label={label}
-      name={field.name}
-    />
-  ) : null;
+        label={label}
+        name={field.name}
+      />
+    )
+    : null
 
   return (
     <FormControl {...formControlProps}>
       {labelField}
-      <Stack gap={1} flexDirection="row" alignItems={"center"}>
+      <Stack gap={1} flexDirection="row" alignItems="center">
         <TextField
           error={errorState}
           id={field.name}
           placeholder="0"
           onClick={() => {
-            setTouched(true, true);
+            setTouched(true, true)
           }}
           type="number"
           onChange={(e) => {
@@ -66,7 +69,7 @@ export default function RangeInput({
             setValue([value?.[0], Number(e.target.value)]);
           }}
           onClick={() => {
-            setTouched(true, true);
+            setTouched(true, true)
           }}
           type="number"
           value={value?.[1]}
@@ -84,5 +87,5 @@ export default function RangeInput({
         </Box>
       )}
     </FormControl>
-  );
+  )
 }

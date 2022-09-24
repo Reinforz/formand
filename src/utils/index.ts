@@ -1,1 +1,2 @@
-export * from "./transformString";
+export * from './transformString';
+

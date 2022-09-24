@@ -2,6 +2,7 @@ import {
   Box,
   FormControl,
   FormControlProps,
+  Stack,
   TextField,
   TextFieldProps
 } from '@mui/material';
@@ -17,6 +18,8 @@ export type TextInputProps = TextFieldProps & {
   placeholder?: string | number;
   formControlProps?: FormControlProps;
   maxLength?: number;
+  startComponent?: ReactNode;
+  endComponent?: ReactNode;
 };
 
 export default function TextInput({
@@ -30,21 +33,29 @@ export default function TextInput({
   required,
   formControlProps = {},
   maxLength,
+  endComponent = null,
+  startComponent = null,
   ...props
 }: TextInputProps) {
-  const [field, { error, touched, value }, { setTouched }] =
-    useField<string>(name);
+  const [
+    field,
+    { error, touched, value },
+    { setTouched, setValue }
+  ] = useField<string | string[]>(name);
 
-  const errorState = touched ? Boolean(error) : false;
+  const val = Array.isArray(value) ? value[0] : value;
+  const errorMessage = Array.isArray(error) ? error[0] : error;
+  const errorState = touched ? Boolean(errorMessage) : false;
 
   const labelField = label ? (
     <FieldLabel
       required={required}
       error={
-        touched && error
-          ? error.toLowerCase().includes('required')
+        touched && errorMessage
+          ? errorMessage.toLowerCase().includes('required')
+            || errorMessage.toLowerCase().includes('at least 1 element')
             ? ''
-            : error
+            : errorMessage
           : undefined
       }
       label={label}
@@ -63,33 +74,47 @@ export default function TextInput({
         sx={{
           mb: 0.5
         }}
-        helperText={`${value?.length || 0}/${maxLength}`}
+        helperText={`${val?.length || 0}/${maxLength}`}
       />
     );
   }
 
   return (
     <FormControl {...formControlProps}>
-      {labelField} {maxCharLengthField}
-      <TextField
-        fullWidth={fullWidth}
-        multiline={multiline}
-        rows={rows}
-        error={errorState}
-        id={field.name}
-        placeholder={placeholder ?? label}
-        onClick={() => {
-          setTouched(true, true);
-        }}
-        {...inputProps}
-        {...field}
-        {...props}
-      />
-      {helperText && (
-        <Box my={0.5}>
-          <FieldHelperText helperText={helperText} />
-        </Box>
-      )}
+      <>
+        {labelField}
+        {' '}
+        {maxCharLengthField}
+        <Stack flexDirection="row" gap={1}>
+          <>
+            {startComponent}
+            <TextField
+              fullWidth={fullWidth}
+              multiline={multiline}
+              rows={rows}
+              error={errorState}
+              id={field.name}
+              placeholder={placeholder ?? label}
+              onClick={() => {
+                setTouched(true, true);
+              }}
+              {...inputProps}
+              {...field}
+              {...props}
+              onChange={(e) => {
+                const textValue = e.target.value;
+                setValue(Array.isArray(value) ? [textValue] : textValue);
+              }}
+            />
+            {endComponent}
+          </>
+        </Stack>
+        {helperText && (
+          <Box my={0.5}>
+            <FieldHelperText helperText={helperText} />
+          </Box>
+        )}
+      </>
     </FormControl>
   );
 }
