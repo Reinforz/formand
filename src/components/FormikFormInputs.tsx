@@ -260,7 +260,7 @@ FormConstants<RequestPayload>,
 > &
 Partial<StackProps>;
 
-export function FormikFormInputs<RequestPayload extends Record<any, any>>({
+export default function FormikFormInputs<RequestPayload extends Record<any, any>>({
   formInputs,
   helperText,
   label,

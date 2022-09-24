@@ -11,6 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
+    "start-storybook": "npx start-storybook -p 3000",
+    "build-storybook": "npx build-storybook",
     "lint": "eslint .",
     "lint:fix": "eslint --fix"
   },
@@ -28,6 +30,12 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.1.0",
     "@rollup/plugin-typescript": "^8.5.0",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/preset-create-react-app": "^1.5.2",
+    "@storybook/react": "^6.5.12",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
@@ -45,16 +53,23 @@
     "prettier": "^2.7.1",
     "rollup": "^2.79.0",
     "rollup-plugin-dts": "^4.2.2",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.3",
+    "zod": "^3.19.1"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.1",
     "@mui/system": "^5.8.1",
     "@mui/x-date-pickers": "^5.0.1",
+    "dayjs": "^1.11.5",
     "formik": "^2.2.9",
-    "react": "^18.0.0"
-  }
+    "react": "^17.0.2"
+  },
+  "keywords": [
+    "form-builder",
+    "json-form",
+    "formik-form",
+    "material-ui-form"
+  ]
 }

@@ -1,2 +1,4 @@
 dist
 .eslintrc.js
+storybook-static
+rollup.config.js

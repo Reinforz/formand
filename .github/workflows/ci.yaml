@@ -18,10 +18,11 @@ jobs:
           node-version: "16"
       - name: Install dependencies
         run: |
-          npm ci --no-fund --no-audit
+          npm ci --no-fund --no-audit --force
       - name: Lint
         run: |
           npm run lint
       - name: Build
         run: |
           npm run build
+          npx build-storybook

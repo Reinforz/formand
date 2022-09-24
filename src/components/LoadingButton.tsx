@@ -1,6 +1,6 @@
-import { Button, ButtonProps, CircularProgress } from '@mui/material'
+import { Button, ButtonProps, CircularProgress } from '@mui/material';
 
-interface LoadingButtonProps extends ButtonProps {
+export interface LoadingButtonProps extends ButtonProps {
   children: JSX.Element | string
 }
 
@@ -17,7 +17,7 @@ export default function LoadingButton ({ children, ...props }: LoadingButtonProp
       <CircularProgress
         size={20}
         sx={{
-          color: 'white',
+          color: 'inherit',
           mr: 1
         }}
       />
