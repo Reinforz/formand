@@ -4,7 +4,7 @@ import {
 import { Form, Formik, FormikConfig } from 'formik'
 import { ReactNode } from 'react'
 import { FormConstants, FormInputs } from '../types'
-import { FormikFormInputs } from './FormikFormInput'
+import FormikFormInputs from './FormikFormInputs'
 import LoadingButton from './LoadingButton'
 
 export interface FormikFormProps<Payload extends Record<string, any>> {
@@ -21,7 +21,7 @@ export interface FormikFormProps<Payload extends Record<string, any>> {
   isLoading?: boolean
 }
 
-export function FormikForm<Payload extends Record<string, any>> (
+export default function FormikForm<Payload extends Record<string, any>> (
   props: FormikFormProps<Payload>
 ): JSX.Element {
   const {
