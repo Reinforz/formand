@@ -4,6 +4,7 @@
   "description": "Build beautiful and interactive forms with a simple json configuration",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
